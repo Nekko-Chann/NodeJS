@@ -1,12 +1,8 @@
 const express = require('express');
+const {HomePage, EdanPage} = require('../controllers/homeController');
 const router = express.Router();
 
-router.get('/', (req, res) => {
-    res.send('Hello World with Edan Nguyen');
-});
-
-router.get('/edan', (req, res) => {
-    res.render('sample');
-});
+router.get('/', HomePage);
+router.get('/edan', EdanPage);
 
 module.exports = router;
