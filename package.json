@@ -22,8 +22,9 @@
   "homepage": "https://github.com/Nekko-Chann/NodeJS#readme",
   "dependencies": {
     "dotenv": "16.0.3",
-    "ejs": "3.1.8",
-    "express": "4.18.2"
+    "ejs": "3.1.10",
+    "express": "5.0.0",
+    "mysql2": "3.9.8"
   },
   "devDependencies": {
     "nodemon": "2.0.20"
