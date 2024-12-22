@@ -7,6 +7,11 @@ const HomePage = (req, res) => {
 const EdanPage = (req, res) => {
     res.render('sample');
 }
+
+const CreateUser = (req, res) => {
+    console.log("Check req: ", req.body);
+    res.send('create-user');
+}
 module.exports = {
-    HomePage, EdanPage
+    HomePage, EdanPage, CreateUser,
 };

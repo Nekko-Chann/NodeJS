@@ -7,6 +7,9 @@ const app = express();
 const port = process.env.PORT;
 const hostname = process.env.HOST_NAME;
 
+app.use(express.json());
+app.use(express.urlencoded({extended: true}));
+
 viewEngineConfig(app);
 
 app.use('/', webRoutes);
