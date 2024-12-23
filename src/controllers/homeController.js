@@ -1,5 +1,5 @@
 const connection = require("../config/database");
-const {getAllUsers, getUserById, createUser, updateUserById} = require("../services/crudService");
+const {getAllUsers, getUserById, createUser, updateUserById, deleteUserById} = require("../services/crudService");
 
 const HomePage = async (req, res) => {
     let result = await getAllUsers();
@@ -28,6 +28,18 @@ const UpdateUser = async (req, res) => {
     res.redirect('/');
 }
 
+const DeletePage = async (req, res) => {
+    const userID = req.params.id;
+    let user = await getUserById(userID);
+    res.render('delete', {userDelete: user});
+}
+
+const DeleteUser = async (req, res) => {
+    const {userId} = req.body;
+    await deleteUserById(userId);
+    res.redirect('/');
+}
+
 module.exports = {
-    HomePage, CreatePage, CreateUser, UpdatePage, UpdateUser
+    HomePage, CreatePage, CreateUser, UpdatePage, UpdateUser, DeletePage, DeleteUser
 };
