@@ -7,6 +7,6 @@ router.get('/', HomePage);
 router.get('/create', CreatePage);
 router.post('/create-user', CreateUser);
 
-router.get('/update', UpdatePage);
+router.get('/update/:id', UpdatePage);
 
 module.exports = router;
