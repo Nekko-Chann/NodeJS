@@ -1,5 +1,5 @@
 const connection = require("../config/database");
-const {getAllUsers, getUserById} = require("../services/crudService");
+const {getAllUsers, getUserById, createUser, updateUserById} = require("../services/crudService");
 
 const HomePage = async (req, res) => {
     let result = await getAllUsers();
@@ -12,12 +12,7 @@ const CreatePage = (req, res) => {
 
 const CreateUser = async (req, res) => {
     let {name, email, city} = req.body;
-    console.log("Check name: ", name, "Check email: ", email, "Check city: ", city);
-    let [result, fields] = await connection.query(
-        `INSERT INTO users (email, name, city)
-         VALUES (?, ?, ?)`, [email, name, city]
-    );
-    console.log("Check result: ", result);
+    await createUser(email, name, city);
     res.send('Create User Successfully');
 }
 
@@ -27,6 +22,12 @@ const UpdatePage = async (req, res) => {
     res.render('update', {userUpdate: user});
 }
 
+const UpdateUser = async (req, res) => {
+    let {userId, name, email, city} = req.body;
+    await updateUserById(name, email, city, userId);
+    res.redirect('/');
+}
+
 module.exports = {
-    HomePage, CreatePage, CreateUser, UpdatePage
+    HomePage, CreatePage, CreateUser, UpdatePage, UpdateUser
 };
