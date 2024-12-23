@@ -13,15 +13,6 @@ const CreatePage = (req, res) => {
 const CreateUser = async (req, res) => {
     let {name, email, city} = req.body;
     console.log("Check name: ", name, "Check email: ", email, "Check city: ", city);
-    // connection.query(
-    //     `INSERT INTO users (email, name, city)
-    //      VALUES (?, ?, ?)`,
-    //     [email, name, city],
-    //     function (err, result) {
-    //         console.log(result);
-    //         res.send('Create User Successfully');
-    //     }
-    // )
     let [result, fields] = await connection.query(
         `INSERT INTO users (email, name, city)
          VALUES (?, ?, ?)`, [email, name, city]
@@ -29,6 +20,11 @@ const CreateUser = async (req, res) => {
     console.log("Check result: ", result);
     res.send('Create User Successfully');
 }
+
+const UpdatePage = (req, res) => {
+    res.render('update');
+}
+
 module.exports = {
-    HomePage, CreatePage, CreateUser,
+    HomePage, CreatePage, CreateUser,UpdatePage
 };
