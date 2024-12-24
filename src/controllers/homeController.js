@@ -2,7 +2,7 @@ const connection = require("../config/database");
 const {getAllUsers, getUserById, createUser, updateUserById, deleteUserById} = require("../services/crudService");
 
 const HomePage = async (req, res) => {
-    let result = await getAllUsers();
+    let result = [];
     return res.render('home', {listUsers: result});
 }
 
@@ -12,7 +12,7 @@ const CreatePage = (req, res) => {
 
 const CreateUser = async (req, res) => {
     let {name, email, city} = req.body;
-    await createUser(email, name, city);
+    await createUser(name, email, city);
     res.send('Create User Successfully');
 }
 

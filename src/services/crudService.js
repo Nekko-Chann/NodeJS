@@ -1,4 +1,5 @@
-const connection = require("../config/database")
+const connection = require("../config/database");
+const User = require("../models/user");
 
 const getAllUsers = async () => {
     let [result, fields] = await connection.query(`SELECT * FROM users`);
@@ -12,11 +13,16 @@ const getUserById = async (userID) => {
     return result && result.length > 0 ? result[0] : {};
 }
 
-const createUser = async (email, name, city) => {
-    let [result, fields] = await connection.query(
-        `INSERT INTO users (email, name, city)
-         VALUES (?, ?, ?)`, [email, name, city]
-    );
+const createUser = async (name, email, city) => {
+    // let [result, fields] = await connection.query(
+    //     `INSERT INTO users (email, name, city)
+    //      VALUES (?, ?, ?)`, [email, name, city]
+    // );
+    await User.create({
+        name: name,
+        email: email,
+        city: city,
+    })
 }
 
 const updateUserById = async (name, email, city, userId) => {
