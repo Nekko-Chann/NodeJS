@@ -31,4 +31,20 @@ const createArrayCustomer = async (array) => {
     }
 }
 
-module.exports = {getAllCustomer, createCustomer, createArrayCustomer}
+const updateCustomer = async (customerData) => {
+    try {
+        return await Customer.updateOne({
+            _id: customerData.id
+        }, {
+            name: customerData.name,
+            address: customerData.address,
+            phone: customerData.phone,
+            email: customerData.email,
+            description: customerData.description,
+        })
+    } catch (err) {
+        return null;
+    }
+}
+
+module.exports = {getAllCustomer, createCustomer, createArrayCustomer, updateCustomer}

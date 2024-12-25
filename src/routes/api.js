@@ -4,7 +4,12 @@ const {
     UploadSingleFileAPI, UploadMultipleFilesAPI,
 } = require('../controllers/userController');
 
-const {GetCustomersAPI, CreateCustomersAPI, CreateManyCustomersAPI} = require('../controllers/customerController');
+const {
+    GetCustomersAPI,
+    CreateCustomersAPI,
+    CreateManyCustomersAPI,
+    UpdateCustomersAPI
+} = require('../controllers/customerController');
 
 const routerAPI = express.Router();
 
@@ -37,5 +42,7 @@ routerAPI.get('/customers', GetCustomersAPI);
 routerAPI.post('/customers', CreateCustomersAPI);
 
 routerAPI.post('/many-customers', CreateManyCustomersAPI);
+
+routerAPI.put('/customers', UpdateCustomersAPI);
 
 module.exports = routerAPI;
