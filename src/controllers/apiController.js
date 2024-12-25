@@ -22,4 +22,13 @@ const CreateUsersAPI = async (req, res) => {
     });
 }
 
-module.exports = {getUsersAPI, CreateUsersAPI};
+const UpdateUsersAPI = async (req, res) => {
+    let {name, email, city, userId} = req.body;
+    let user = await User.updateOne({_id: userId}, {name: name, email: email, city: city});
+    return res.status(200).json({
+        errorCode: 0,
+        data: user
+    })
+}
+
+module.exports = {getUsersAPI, CreateUsersAPI, UpdateUsersAPI};
