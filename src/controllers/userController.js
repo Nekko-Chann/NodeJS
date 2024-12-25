@@ -1,6 +1,5 @@
 const User = require("../models/user");
 const {uploadSingleFile, uploadMultipleFiles} = require("../services/fileService")
-// const {createUsersAPI} = require("../services/apiService");
 
 const getUsersAPI = async (req, res) => {
     let result = await User.find({});
@@ -70,10 +69,6 @@ const UploadMultipleFilesAPI = async (req, res) => {
 }
 
 module.exports = {
-    getUsersAPI,
-    CreateUsersAPI,
-    UpdateUsersAPI,
-    DeleteUsersAPI,
-    UploadSingleFileAPI,
-    UploadMultipleFilesAPI
+    getUsersAPI, CreateUsersAPI, UpdateUsersAPI, DeleteUsersAPI,
+    UploadSingleFileAPI, UploadMultipleFilesAPI
 };
