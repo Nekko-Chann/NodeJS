@@ -30,7 +30,7 @@ const UpdateUser = async (req, res) => {
 
 const DeletePage = async (req, res) => {
     const userID = req.params.id;
-    let user = await getUserById(userID);
+    let user = await User.findById(userID).exec();
     res.render('delete', {userDelete: user});
 }
 
