@@ -55,4 +55,15 @@ const deleteCustomer = async (id) => {
     }
 }
 
-module.exports = {getAllCustomer, createCustomer, createArrayCustomer, updateCustomer, deleteCustomer}
+const deleteArrayCustomer = async (array) => {
+    try {
+        return await Customer.deleteById(array);
+    } catch (err) {
+        return null;
+    }
+}
+
+module.exports = {
+    getAllCustomer, createCustomer, createArrayCustomer,
+    updateCustomer, deleteCustomer, deleteArrayCustomer
+}

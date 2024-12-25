@@ -1,7 +1,7 @@
 const {uploadSingleFile} = require("../services/fileService");
 const {
     getAllCustomer, createCustomer, createArrayCustomer,
-    updateCustomer, deleteCustomer
+    updateCustomer, deleteCustomer, deleteArrayCustomer
 } = require("../services/customerService");
 
 const GetCustomersAPI = async (req, res) => {
@@ -65,4 +65,23 @@ const DeleteCustomerAPI = async (req, res) => {
     })
 }
 
-module.exports = {GetCustomersAPI, CreateCustomersAPI, CreateManyCustomersAPI, UpdateCustomersAPI, DeleteCustomerAPI};
+const DeleteManyCustomersAPI = async (req, res) => {
+    const {customersId} = req.body;
+    let customer = await deleteArrayCustomer(customersId);
+    if (customer) {
+        return res.status(200).json({
+            errorCode: 0,
+            data: customer,
+        });
+    } else {
+        return res.status(400).json({
+            errorCode: -1,
+            data: customer,
+        });
+    }
+}
+
+module.exports = {
+    GetCustomersAPI, CreateCustomersAPI, CreateManyCustomersAPI,
+    UpdateCustomersAPI, DeleteCustomerAPI, DeleteManyCustomersAPI
+};
