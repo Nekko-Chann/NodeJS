@@ -13,7 +13,7 @@ const createUser = async (name, email, city) => {
 }
 
 const updateUserById = async (name, email, city, userId) => {
-
+    await User.updateOne({_id: userId}, {name: name, email: email, city: city});
 }
 
 const deleteUserById = async (userId) => {
