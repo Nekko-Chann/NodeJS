@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/Nekko-Chann/NodeJS#readme",
   "dependencies": {
+    "api-query-params": "5.4.0",
     "dotenv": "16.0.3",
     "ejs": "3.1.10",
     "express": "5.0.0",

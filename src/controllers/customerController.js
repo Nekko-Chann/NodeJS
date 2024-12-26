@@ -5,10 +5,11 @@ const {
 } = require("../services/customerService");
 
 const GetCustomersAPI = async (req, res) => {
-    let {limit, page} = req.query;
+
+    let {limit, page, name} = req.query;
     let result = null;
     if (limit && page) {
-        result = await getAllCustomer(limit, page);
+        result = await getAllCustomer(limit, page, name, req.query);
     } else {
         result = await getAllCustomer();
     }
