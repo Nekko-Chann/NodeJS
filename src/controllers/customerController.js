@@ -5,7 +5,13 @@ const {
 } = require("../services/customerService");
 
 const GetCustomersAPI = async (req, res) => {
-    let result = await getAllCustomer();
+    let {limit, page} = req.query;
+    let result = null;
+    if (limit && page) {
+        result = await getAllCustomer(limit, page);
+    } else {
+        result = await getAllCustomer();
+    }
     return res.status(200).json({
         errorCode: 0,
         data: result,

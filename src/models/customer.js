@@ -12,11 +12,6 @@ const customerSchema = new mongoose.Schema(
     },
     {
         timestamps: true,
-        // statics: {
-        //     findByName(name) {
-        //         return this.find({name: new RegExp(name, 'i')});
-        //     }
-        // }
     }
 );
 

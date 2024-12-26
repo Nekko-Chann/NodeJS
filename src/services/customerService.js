@@ -1,8 +1,15 @@
 const Customer = require('../models/customer');
 
-const getAllCustomer = async () => {
+const getAllCustomer = async (limit, page) => {
     try {
-        return await Customer.find({});
+        let result = null;
+        if (limit && page) {
+            let offset = (page - 1) * limit;
+            result = await Customer.find({}).skip(offset).limit(limit).exec();
+        } else {
+            result = await Customer.find({});
+        }
+        return result;
     } catch (err) {
         return null;
     }
