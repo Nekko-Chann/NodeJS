@@ -10,11 +10,12 @@ const {
 } = require('../controllers/customerController');
 
 const {
-    CreateProjectsAPI
+    GetProjectsAPI, CreateProjectsAPI
 } = require('../controllers/projectController');
 
 const routerAPI = express.Router();
 
+//User
 routerAPI.get('/users', getUsersAPI);
 
 routerAPI.post('/users', CreateUsersAPI);
@@ -27,6 +28,7 @@ routerAPI.post('/file', UploadSingleFileAPI);
 
 routerAPI.post('/files', UploadMultipleFilesAPI);
 
+//Customer
 routerAPI.get('/customers', GetCustomersAPI);
 
 routerAPI.post('/customers', CreateCustomersAPI);
@@ -39,7 +41,11 @@ routerAPI.delete('/customers', DeleteCustomerAPI);
 
 routerAPI.delete('/many-customers', DeleteManyCustomersAPI);
 
+//Project
+routerAPI.get('/projects', GetProjectsAPI);
+
 routerAPI.post('/projects', CreateProjectsAPI);
+
 
 routerAPI.get('/info', (req, res) => {
     res.status(200).send({

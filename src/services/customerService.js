@@ -8,7 +8,6 @@ const getAllCustomer = async (limit, page, queryString) => {
             let offset = (page - 1) * limit;
             const {filter} = aqp(queryString);
             delete filter.page;
-            console.log("Check filter: ", filter);
             result = await Customer.find(filter).skip(offset).limit(limit).exec();
         } else {
             result = await Customer.find({});

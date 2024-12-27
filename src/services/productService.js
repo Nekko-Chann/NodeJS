@@ -1,6 +1,18 @@
 const Project = require('../models/Project');
+const aqp = require('api-query-params');
 
-const createProjects = async (data) => {
+const getAllProject = async (queryString) => {
+    try {
+        const page = queryString.page;
+        const {filter, limit, population} = aqp(queryString);
+        delete filter.page;
+        let offset = (page - 1) * limit;
+        return await Project.find(filter).populate(population).skip(offset).limit(limit).exec();
+    } catch (err) {
+        return null;
+    }
+}
+const createProject = async (data) => {
     try {
         if (data.type === "EMPTY-PROJECT") {
             return await Project.create(data);
@@ -18,4 +30,4 @@ const createProjects = async (data) => {
     }
 }
 
-module.exports = {createProjects}
+module.exports = {getAllProject, createProject}
