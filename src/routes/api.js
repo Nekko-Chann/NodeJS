@@ -9,6 +9,10 @@ const {
     UpdateCustomersAPI, DeleteCustomerAPI, DeleteManyCustomersAPI
 } = require('../controllers/customerController');
 
+const {
+    CreateProjectsAPI
+} = require('../controllers/projectController');
+
 const routerAPI = express.Router();
 
 routerAPI.get('/users', getUsersAPI);
@@ -34,6 +38,8 @@ routerAPI.put('/customers', UpdateCustomersAPI);
 routerAPI.delete('/customers', DeleteCustomerAPI);
 
 routerAPI.delete('/many-customers', DeleteManyCustomersAPI);
+
+routerAPI.post('/projects', CreateProjectsAPI);
 
 routerAPI.get('/info', (req, res) => {
     res.status(200).send({
